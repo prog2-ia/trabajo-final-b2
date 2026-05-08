@@ -1,0 +1,2 @@
+# Lista de dependencias (no hay nada)
+# Por ahora está vacío o con librerías estándar 
