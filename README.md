@@ -1,18 +1,112 @@
-# Proyecto de Programación II (Gestor de facturación y clientes)
+# Proyecto de Programación II - Gestor de facturación y clientes
 
-## Propósito
-Este proyecto es una implementación de un sistema de gestión utilizando los principios de POO en Python.
+## Descripción
 
-## Instalación
-1. Clonar el repositorio.
-2. Crear un entorno virtual: `python -m venv venv`.
-3. Activar el entorno virtual.
-4. Instalar dependencias: `pip install -r requirements.txt`.
-5. No hay dependencias de momento no hace falta que lo ejecuteis, (no hace nada)
-6. ...
-# En un futuro amipliaremos implementando SQLite que nos permitira crear una vision de nuestros datos mejor
+Aplicación de consola en Python para gestionar clientes, emitir facturas, añadir conceptos, consultar reportes y crear copias de seguridad.
 
-## Uso
-Ejecutar el programa principal con:
+La versión actual incorpora de forma expresa los contenidos de los temas:
+
+- **T08 - Sobrecarga de operadores matemáticos**.
+- **T10 - Ficheros de texto**.
+- **T11 - Ficheros binarios, pickle y manejo de directorios**.
+
+## Funcionalidades principales
+
+1. Registrar clientes.
+2. Listar clientes.
+3. Buscar clientes.
+4. Eliminar clientes sin facturas asociadas.
+5. Emitir facturas.
+6. Añadir conceptos a facturas.
+7. Mostrar facturas.
+8. Mostrar reporte general.
+9. Guardar y cargar datos en ficheros JSON.
+10. Exportar reporte a fichero TXT.
+11. Crear y restaurar backups binarios con pickle.
+12. Listar backups guardados en el directorio de datos.
+13. Demostrar operadores especiales aplicados a la clase `Factura`.
+
+## Implementación del temario
+
+### T08 - Sobrecarga de operadores
+
+La clase `Factura` implementa:
+
+- `__add__`: permite hacer `factura + ("Servicio", 100)` y devuelve una nueva factura.
+- `__iadd__`: permite hacer `factura += ("Servicio", 100)` y modifica la factura actual.
+- `__radd__`: permite hacer `("Servicio", 100) + factura`.
+- `__getitem__`: permite consultar conceptos con `factura[0]` o `factura[1:]`.
+- `__setitem__`: permite modificar conceptos con `factura[0] = ("Nuevo concepto", 50)`.
+- `__len__`: permite usar `len(factura)`.
+- `__iter__`: permite recorrer la factura con `for item in factura`.
+- `__eq__` y `__lt__`: permite comparar facturas por importe total.
+
+### T10 - Ficheros de texto
+
+El proyecto utiliza ficheros de texto en formato JSON:
+
+- `src/data/clientes.json`
+- `src/data/facturas.json`
+
+También permite exportar un reporte en texto plano:
+
+- `src/data/reporte_facturacion.txt`
+
+Se usan aperturas seguras con `with open(...)`, modos `r` y `w`, codificación `utf-8`, lectura con `json.load` y escritura con `json.dump`/`writelines`.
+
+### T11 - Ficheros binarios, pickle y directorios
+
+El proyecto implementa:
+
+- Creación automática del directorio `src/data/backups` con `os.makedirs`.
+- Comprobación de existencia de ficheros con `os.path.exists`.
+- Listado de backups con `os.scandir`.
+- Creación de backups binarios `.pickle` con `pickle.dump`.
+- Restauración de backups con `pickle.load`.
+- Copia de backups con `shutil.copy2` desde el servicio.
+
+## Estructura del proyecto
+
+```text
+trabajo-final-b2-main/
+├── main.py
+├── README.md
+├── requirements.txt
+└── src/
+    ├── data/
+    │   ├── clientes.json
+    │   ├── facturas.json
+    │   └── backups/
+    ├── exceptions/
+    ├── menu/
+    ├── models/
+    └── services/
+```
+
+## Ejecución
+
+Desde la carpeta principal del proyecto:
+
 ```bash
 python main.py
+```
+
+No requiere librerías externas.
+
+## Ejemplo de uso de operadores especiales
+
+```python
+from src.models import Cliente, Factura
+
+cliente = Cliente("C001", "Cliente de prueba", "cliente@email.com")
+factura = Factura(1, cliente)
+
+factura += ("Concepto 1", 100)       # __iadd__
+factura2 = factura + ("Concepto 2", 50)  # __add__
+factura3 = ("Concepto 0", 25) + factura  # __radd__
+
+print(factura[0])                    # __getitem__
+factura[0] = ("Concepto modificado", 120)  # __setitem__
+print(len(factura))                  # __len__
+print(factura < factura2)            # __lt__
+```

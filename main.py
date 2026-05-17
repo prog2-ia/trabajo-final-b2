@@ -1,8 +1,7 @@
-from menu.menu_principal import MenuPrincipal
+from src.menu.menu_principal import MenuPrincipal
 
 
 def main():
-
     menu = MenuPrincipal()
     menu.iniciar()
 
