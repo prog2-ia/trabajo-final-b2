@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+.env
+.venv/
+venv/
+
+.vscode/
+.idea/
+
+src/data/*.json
+src/data/backups/*.pickle
