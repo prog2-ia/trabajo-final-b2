@@ -48,3 +48,4 @@ python main.py
 
 No requiere librerías externas.
 
+El proyecto se ha desarrollado en local, por lo que no queda reflejado todo el progreso en el repositorio. Aunque inicialmente estaba previsto realizarlo en pareja, finalmente mi compañero no pudo participar, por lo que el trabajo fue desarrollado individualmente. Debido a ello, utilicé parcialmente inteligencia artificial como apoyo en la revisión, organización y mejora del proyecto.
