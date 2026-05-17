@@ -23,19 +23,35 @@ Aplicación de consola en Python para gestionar clientes, emitir facturas, añad
 ## Estructura del proyecto
 
 ```text
-trabajo-final-b2-main/
+trabajo-final-b2/
+│
 ├── main.py
 ├── README.md
 ├── requirements.txt
+├── .gitignore
+│
 └── src/
-    ├── data/
-    │   ├── clientes.json
-    │   ├── facturas.json
-    │   └── backups/
-    ├── exceptions/
+    ├── __init__.py
+    │
     ├── menu/
+    │   ├── __init__.py
+    │   └── menu_principal.py
+    │
     ├── models/
-    └── services/
+    │   ├── __init__.py
+    │   ├── cliente.py
+    │   └── factura.py
+    │
+    ├── services/
+    │   ├── __init__.py
+    │   └── gestor_facturacion.py
+    │
+    ├── exceptions/
+    │   ├── __init__.py
+    │   └── excepciones.py
+    │
+    └── data/
+        └── backups/
 ```
 
 ## Ejecución
