@@ -4,12 +4,6 @@
 
 Aplicación de consola en Python para gestionar clientes, emitir facturas, añadir conceptos, consultar reportes y crear copias de seguridad.
 
-La versión actual incorpora de forma expresa los contenidos de los temas:
-
-- **T08 - Sobrecarga de operadores matemáticos**.
-- **T10 - Ficheros de texto**.
-- **T11 - Ficheros binarios, pickle y manejo de directorios**.
-
 ## Funcionalidades principales
 
 1. Registrar clientes.
