@@ -48,20 +48,3 @@ python main.py
 
 No requiere librerías externas.
 
-## Ejemplo de uso de operadores especiales
-
-```python
-from src.models import Cliente, Factura
-
-cliente = Cliente("C001", "Cliente de prueba", "cliente@email.com")
-factura = Factura(1, cliente)
-
-factura += ("Concepto 1", 100)       # __iadd__
-factura2 = factura + ("Concepto 2", 50)  # __add__
-factura3 = ("Concepto 0", 25) + factura  # __radd__
-
-print(factura[0])                    # __getitem__
-factura[0] = ("Concepto modificado", 120)  # __setitem__
-print(len(factura))                  # __len__
-print(factura < factura2)            # __lt__
-```
